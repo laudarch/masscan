@@ -1427,7 +1427,15 @@ int main(int argc, char *argv[])
     global_time_start = 1.0 * pixie_gettime() / 1000000.0;
 
     /* Set system to report debug information on crash */
-    pixie_backtrace_init(argv[0]);
+    {
+        int is_backtrace = 1;
+        for (i=1; i<(unsigned)argc; i++) {
+            if (strcmp(argv[i], "--nobacktrace") == 0)
+                is_backtrace = 0;
+        }
+        if (is_backtrace)
+            pixie_backtrace_init(argv[0]);
+    }
     
     /*
      * Initialize those defaults that aren't zero
