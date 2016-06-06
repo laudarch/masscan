@@ -1137,6 +1137,9 @@ main_scan(struct Masscan *masscan)
      * hundreds of subranges. This scans through them faster. */
     picker = rangelist_pick2_create(&masscan->targets);
 
+#ifdef __AFL_HAVE_MANUAL_CONTROL
+  __AFL_INIT();
+#endif
 
     /*
      * Start scanning threats for each adapter
