@@ -1386,7 +1386,6 @@ main_scan(struct Masscan *masscan)
 
                 transmit_count += parms->done_transmitting;
                 receive_count += parms->done_receiving;
-
             }
 
             pixie_mssleep(250);
